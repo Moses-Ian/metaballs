@@ -23,6 +23,9 @@ function draw() {
   // put drawing code here
 	//background(51);
 	
+	// update the scene
+	blob.update();
+	
 	// define shader inputs like this
 	metaballShader.setUniform('u_resolution', [width, height]);
 	metaballShader.setUniform('u_metaballPosition', [blob.pos.x, blob.pos.y]);
@@ -37,6 +40,6 @@ function draw() {
 	// show the blob
 	blob.show();
 
-	
+	//noLoop();
 	
 }
