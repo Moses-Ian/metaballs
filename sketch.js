@@ -1,6 +1,7 @@
 let metaballShader;
-let blob;
+let blobs;
 let bufferCanvas;
+const numberOfBlobs = 3;	// this must match numberOfBlobs in the shader
 
 function preload() {
 	metaballShader = loadShader('shader.vert', 'shader.frag');
@@ -16,7 +17,13 @@ function setup() {
 	bufferCanvas.shader(metaballShader);
 
 	// create the blob
-	blob = new Blob(0, 0, 50);
+	blobs = [];
+	for (let i=0; i<numberOfBlobs; i++) {
+		let x = random(-width/2, width/2);
+		let y = random(-height/2, height/2);
+		blobs.push(new Blob(x, y, 50));
+	}
+	console.log(blobs);
 }
 
 function draw() {
@@ -24,12 +31,11 @@ function draw() {
 	//background(51);
 	
 	// update the scene
-	blob.update();
+	blobs.forEach(blob => blob.update());
 	
 	// define shader inputs like this
 	metaballShader.setUniform('u_resolution', [width, height]);
-	metaballShader.setUniform('u_metaballPosition', [blob.pos.x, blob.pos.y]);
-	metaballShader.setUniform('u_radius', blob.r);
+	metaballShader.setUniform('u_metaballs', createMetaballArray());
 	
 	// show the shader
 	rectMode(CENTER);
@@ -37,9 +43,15 @@ function draw() {
 	texture(bufferCanvas);
 	rect(0, 0, width, height);
 
-	// show the blob
-	blob.show();
+	// show the blobs
+	//blobs.forEach(blob => blob.show());
 
 	//noLoop();
 	
+}
+
+function createMetaballArray() {
+	let arr = [];
+	blobs.forEach(blob => arr.push(blob.pos.x, blob.pos.y, blob.r));
+	return arr;
 }
