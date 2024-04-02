@@ -11,7 +11,7 @@ I also used a video from Zach Star showing how logistic growth works to limit th
 # Link
 
 You can view the deployed page here:
-https://moses-ian.github.io/snake-A-Star/
+https://moses-ian.github.io/metaballs/
 
 ## Credits
 
