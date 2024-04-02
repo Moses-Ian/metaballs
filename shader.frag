@@ -4,7 +4,7 @@ precision highp float;
 // gl_FragCoord
 
 // constants that I define
-const int numberOfBlobs = 10;	// this must match numberOfBlobs in the sketch
+const int numberOfBlobs = 15;	// this must match numberOfBlobs in the sketch
 
 // variables that get set by my custom sketch
 uniform vec2 u_resolution;
