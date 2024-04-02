@@ -26,7 +26,6 @@ function setup() {
 		let y = random(-height/2, height/2);
 		blobs.push(new Blob(x, y, 12));
 	}
-	console.log(blobs);
 	
 	// max speed
 	maxSpeed = 0;

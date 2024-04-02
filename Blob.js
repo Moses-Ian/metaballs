@@ -25,7 +25,7 @@ class Blob {
 	
 	attract(other) {
 		let force = p5.Vector.sub(this.pos, other.pos);
-		let distanceSq = constrain(force.magSq(), .01);
+		let distanceSq = constrain(force.magSq(), .01, 100);
 		let strength = G * (this.mass * other.mass);
 		force.setMag(strength);
 		other.applyForce(force);

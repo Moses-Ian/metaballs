@@ -4,20 +4,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
+  <title>Metaballs</title>
   <style>
     body {
-      padding: 0;
+      padding: 5px;
       margin: 0;
-    }
+			background-color: #1d1e22;
+			color: whitesmoke;
+		}
   </style>
-  <script src="./p5/p5.js"></script>
+  <script src="./p5/p5.min.js"></script>
   <script src="Blob.js"></script>
   <script src="sketch.js"></script>
 </head>
 
 <body>
 	<div id="sketch-container"></div>
+	<div>
+		<h1>Metaballs</h1>
+		<h3>by Ian Moses</h3>
+		<p>This is my attempt at creating metaballs.</p>
+
+		<p>The purpose of this project is more for me to learn how shaders work than anything else. I especially wanted to learn how to blend shaders into p5. I know that metaballs can be easily done with just shaders, so I made this one stateful so that the shaders lay on top of the underlying data. In mine, the metaballs follow the n-body problem. I based all of the shader, metaball, and n-body stuff off of The Coding Train.</p>
+
+		<p>I also used a video from Zach Star showing how logistic growth works to limit the speed of the metaballs. It adds a really nice subtle soft cap to the speed of the balls, stopping them from veering out of control.</p>
+	</div>
+	<div id="github-link">
+		Check it out on <a href="">GitHub</a>.
+	</div>
 </body>
 
 </html>
