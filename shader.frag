@@ -4,7 +4,7 @@ precision highp float;
 // gl_FragCoord
 
 // constants that I define
-const int numberOfBlobs = 3;	// this must match numberOfBlobs in the sketch
+const int numberOfBlobs = 10;	// this must match numberOfBlobs in the sketch
 
 // variables that get set by my custom sketch
 uniform vec2 u_resolution;
@@ -24,6 +24,13 @@ vec2 mapObject(vec2 pos) {
 	return result;
 }
 
+vec3 hsv2rgb(vec3 c)
+{
+    vec4 K = vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0);
+    vec3 p = abs(fract(c.xxx + K.xyz) * 6.0 - K.www);
+    return c.z * mix(K.xxx, clamp(p - K.xxx, 0.0, 1.0), c.y);
+}
+
 void main() {
 	// normalize our inputs
 	vec2 uv = gl_FragCoord.xy * 2.0 / u_resolution.xy;
@@ -39,10 +46,13 @@ void main() {
 	// pick an interesting color
 	float d;
 	vec3 color;
+	float hue;
 	for (int i=0; i<numberOfBlobs; i++) {
 		d = distance(uv, metaballs[i].pos);
-		color += vec3(metaballs[i].r / d);
+		hue += metaballs[i].r / d;
 	}
+	hue = min(hue, 1.0);
+	color = hsv2rgb(vec3(hue, 1.0, 1.0));
 	
 	// set the color
 	gl_FragColor = vec4(color, 1.0);

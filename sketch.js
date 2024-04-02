@@ -1,7 +1,7 @@
 let metaballShader;
 let blobs;
 let bufferCanvas;
-const numberOfBlobs = 3;	// this must match numberOfBlobs in the shader
+const numberOfBlobs = 10;	// this must match numberOfBlobs in the shader
 
 function preload() {
 	metaballShader = loadShader('shader.vert', 'shader.frag');
@@ -21,7 +21,7 @@ function setup() {
 	for (let i=0; i<numberOfBlobs; i++) {
 		let x = random(-width/2, width/2);
 		let y = random(-height/2, height/2);
-		blobs.push(new Blob(x, y, 50));
+		blobs.push(new Blob(x, y, 10));
 	}
 	console.log(blobs);
 }
